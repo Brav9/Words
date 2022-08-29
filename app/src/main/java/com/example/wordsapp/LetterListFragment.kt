@@ -1,12 +1,7 @@
 package com.example.wordsapp
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
@@ -17,8 +12,7 @@ import com.example.wordsapp.databinding.FragmentLetterListBinding
 
 class LetterListFragment : Fragment() {
     private var _binding: FragmentLetterListBinding? = null
-
-    private val binding get() = _binding
+    private val binding get() = _binding!!
     private lateinit var recyclerView: RecyclerView
     private var isLinearLayoutManager = true
 
@@ -28,8 +22,7 @@ class LetterListFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentLetterListBinding.inflate(inflater, container, false)
@@ -48,7 +41,7 @@ class LetterListFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.layout_menu, menu)
 
         val layoutButton = menu.findItem(R.id.action_switch_layout)
         setIcon(layoutButton)
